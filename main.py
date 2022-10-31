@@ -30,7 +30,7 @@ if not credentials or credentials.invalid:
     )
     credentials = tools.run_flow(flow=flow, storage=store)
 http = Http()
-photos = discovery.build("photoslibrary", "v1", http=credentials.authorize(http))
+photos = discovery.build("photoslibrary", "v1", http=credentials.authorize(http), static_discovery=False)
 albums = photos.albums().list().execute()["albums"]
 
 
